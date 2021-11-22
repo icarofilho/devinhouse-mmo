@@ -31,7 +31,7 @@ const News = () => {
                 value={father}
                 textoPesquisa="as ultimas noticias"
             />
-            
+            {father.length >0 ? <h4>Resultado para "{father}"</h4> : <h4>Todas as noticias</h4>}
             {news.length > 0 ? (
                 news.map((notice) => {
                     if (father === "") {

@@ -11,7 +11,7 @@ import * as C from "./styles";
 const News = () => {
     const [father, setFather] = useState("");
     const [games, setGames] = useState([]);
-    // const [count, setCount] = useState(0);
+    const [count, setCount] = useState(0);
     useEffect(() => {
         const gameURL = process.env.REACT_APP_UNSPLASH_GAMELIST;
         const config = {
@@ -36,12 +36,13 @@ const News = () => {
                 <div className='searchBarContainer'>
                     <SearchBar setProps={setFather} value={father} textoPesquisa='pelo seu jogo'/>
                     <h4 style={{ display: "block" }}>
-                        Total de jogos: {contador()}
+                        {father === '' ? `Total de jogos: ${contador()}` : `Pesquisa por ${father}`}
                     </h4>
                 </div>
                 {games.length > 0 ? (
                     games.map((game) => {
                         if (father === "") {
+                            
                             return (
                                 <GamesCard
                                     url={game.id}
